@@ -14,6 +14,7 @@ export default function UploadPage() {
   return (
     <div>
       <h1 className='text-2xl font-bold mb-4'>Reader & Tools — Learnify</h1>
+
       <div className='grid md:grid-cols-2 gap-6'>
         <div>
           <PDFUploader onUpload={(p)=>setPdfPath(p)} />

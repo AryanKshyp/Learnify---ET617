@@ -6,7 +6,10 @@ async function postEvent(payload: any) {
     await fetch('/api/track', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      cache: 'no-store',
+      keepalive: true,
+      credentials: 'include'
     })
   } catch (e) {
     console.error('Track error', e)
