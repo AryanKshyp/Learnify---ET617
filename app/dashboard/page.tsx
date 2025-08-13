@@ -108,7 +108,7 @@ export default function DashboardPage() {
     )
     const csv = [headers.join(',')]
     for (const row of rows) {
-      const line = headers.map(h => formatCsvCell((row as any)[h]))
+      const line = headers.map(h => formatCsvCell((row as Record<string, any>)[h]))
       csv.push(line.join(','))
     }
     const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' })
