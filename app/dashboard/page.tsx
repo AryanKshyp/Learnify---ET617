@@ -113,7 +113,7 @@ export default function DashboardPage() {
     
     const csv = [headers.join(',')]
     for (const row of validRows) {
-      const line = headers.map(h => formatCsvCell(row[h]))
+      const line = headers.map(h => formatCsvCell(row[h as keyof typeof row]))
       csv.push(line.join(','))
     }
     
