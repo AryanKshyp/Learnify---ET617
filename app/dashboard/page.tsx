@@ -100,17 +100,23 @@ export default function DashboardPage() {
       URL.revokeObjectURL(url)
       return
     }
+    
+    // Type guard to ensure rows are objects
+    const validRows = rows.filter(row => row && typeof row === 'object')
+    
     const headers = Array.from(
-      rows.reduce((set: Set<string>, row: any) => {
-        Object.keys(row || {}).forEach(k => set.add(k))
+      validRows.reduce((set: Set<string>, row: Record<string, any>) => {
+        Object.keys(row).forEach(k => set.add(k))
         return set
       }, new Set<string>())
     )
+    
     const csv = [headers.join(',')]
-    for (const row of rows) {
-      const line = headers.map(h => formatCsvCell((row as Record<string, any>)[h]))
+    for (const row of validRows) {
+      const line = headers.map(h => formatCsvCell(row[h]))
       csv.push(line.join(','))
     }
+    
     const blob = new Blob([csv.join('\n')], { type: 'text/csv;charset=utf-8;' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
