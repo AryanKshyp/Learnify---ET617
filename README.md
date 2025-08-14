@@ -4,6 +4,8 @@
 
 Link to the website - https://learnify-today.vercel.app/ 
 
+Demo Video - [Features of Learnify](learnify_aryan_video_demo.mp4)
+
 ## ✨ What Makes Learnify Special?
 
 ### 🎯 **Focused PDF Reading**
